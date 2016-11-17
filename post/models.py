@@ -8,3 +8,7 @@ class Post(models.Model):
   title = models.TextField(blank = False)
   content = models.TextField(blank = True)
   created_at = models.DateTimeField(auto_now_add=True)
+
+class Avatar(models.Model): 
+  image = models.ImageField(upload_to='media/avatars/', null=False)
+  user = models.OneToOneField(User, related_name="avatar", null = False)
