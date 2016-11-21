@@ -10,4 +10,5 @@ urlpatterns = [
     url(r'^post/(?P<pk>[0-9]+)/$', views.PostDetail.as_view()),
     url(r'^reply/$', views.ReplyList.as_view()),
     url(r'^reply/(?P<pk>[0-9]+)/$', views.ReplyDetail.as_view()),
+    url(r'^login/$', views.ObtainAuthToken.as_view()),
 ]
