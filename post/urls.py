@@ -8,4 +8,6 @@ admin.site.register(Avatar)
 urlpatterns = [
     url(r'^post/$', views.PostList.as_view()),
     url(r'^post/(?P<pk>[0-9]+)/$', views.PostDetail.as_view()),
+    url(r'^reply/$', views.ReplyList.as_view()),
+    url(r'^reply/(?P<pk>[0-9]+)/$', views.ReplyDetail.as_view()),
 ]
