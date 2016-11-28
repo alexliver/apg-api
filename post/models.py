@@ -6,11 +6,16 @@ from django.contrib.auth.models import User
 class IRepliable(models.Model):
   pass
 
+class Category(models.Model):
+  name = models.TextField(blank = False)
+  iconType = models.TextField()
+
 class Post(IRepliable):  
   writer = models.ForeignKey(User, related_name='posts', blank = False)  
   title = models.TextField(blank = False)
   content = models.TextField(blank = True)
   created_at = models.DateTimeField(auto_now_add=True)
+  category = models.ForeignKey(Category, related_name='posts', null=False)
 
 class Reply(IRepliable): 
   to = models.ForeignKey(IRepliable, related_name='replies')

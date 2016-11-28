@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from post.models import Post, Avatar, Reply, IRepliable
+from post.models import Post, Avatar, Reply, IRepliable, Category
 from django.contrib.auth.models import User
 
 class AvatarSerializer(serializers.ModelSerializer):
@@ -26,11 +26,18 @@ class ReplySerializer(serializers.ModelSerializer):
         return fields
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('pk', 'name', 'iconType')
+
+
 class PostSerializer(serializers.ModelSerializer):
     writer = UserSerializer(read_only=True, many=False)
     replies = ReplySerializer(read_only=True, many=True)
+    category = CategorySerializer(read_only=True, many=False)
     class Meta:
         model = Post
-        fields = ('pk', 'writer', 'title', 'content', 'created_at', 'replies')
+        fields = ('pk', 'writer', 'title', 'content', 'created_at', 'replies', 'category')
 
 
