@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'corsheaders',
     'post',
+    'oauth2_provider',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +132,10 @@ REST_FRAMEWORK = {
 #TODO for test only
         #'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
         'rest_framework.permissions.AllowAny',
-        
-    ]
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
+    )   
 }
 CORS_ORIGIN_ALLOW_ALL = True
 MEDIA_ROOT = "media/"

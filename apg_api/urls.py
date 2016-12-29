@@ -18,14 +18,18 @@ from django.conf.urls.static import static
 
 from django.contrib import admin
 import post.urls as post_urls
+import auth.urls as auth_urls
 import settings
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 ]
 
 urlpatterns += post_urls.urlpatterns
+urlpatterns += auth_urls.urlpatterns
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
