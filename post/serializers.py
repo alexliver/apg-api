@@ -11,7 +11,7 @@ class UserSerializer(serializers.ModelSerializer):
     avatar = AvatarSerializer(read_only=True, many=False)
     class Meta:
         model = User
-        fields = ('pk', 'username', 'email', 'avatar', 'is_superuser')
+        fields = ('pk', 'username', 'avatar', 'is_superuser')
 
 class ReplySerializer(serializers.ModelSerializer):
     writer = UserSerializer(read_only=False, many=False,
