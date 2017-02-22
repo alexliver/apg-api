@@ -1,6 +1,12 @@
+<style>
+code {
+  display: block;
+  white-space: pre-wrap   
+}
+</style>
 # apg-api
 Alex's Playground (Backend)
-<h1>Install</h1>
+# Install
 You probably need to install the following packages:
 
 <code>
