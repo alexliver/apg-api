@@ -16,7 +16,7 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = CategorySerializer
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all()
+    queryset = Post.objects.all().order_by('-created_at').all()
     serializer_class = PostSerializer
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -28,7 +28,7 @@ class CategoryPostList(generics.ListAPIView):
 
     def get_queryset(self):
         categoryID = self.kwargs['categoryID']
-        return Post.objects.filter(category__pk=categoryID)
+        return Post.objects.filter(category__pk=categoryID).order_by('-created_at')
         
 class ReplyList(generics.ListCreateAPIView):
     queryset = Reply.objects.all()
